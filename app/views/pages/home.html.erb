@@ -1,38 +1,48 @@
 <%= render "./shared/navbar" %>
 <%= render "./shared/banner" %>
 
-<div class="card-trip">
-  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
-  <div class="card-trip-infos">
-    <div>
-      <h2>Title here</h2>
-      <p>Short description here!</p>
+<div class="search-spacing">
+  <%= render "./shared/search" %>
+</div>
+
+<div class="cards">
+  <div class="card-trip">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/8/87/Clouds_CL6.jpg" />
+    <div class="card-trip-infos">
+      <div>
+        <h2>Yoga in the Park</h2>
+        <p>Take a breath with a relaxing yoga session in the park</p>
+      </div>
+      <h2 class="card-trip-pricing">€10,-</h2>
+      <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
     </div>
-    <h2 class="card-trip-pricing">£99.99</h2>
-    <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+  </div>
+
+  <div class="card-trip">
+    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+    <div class="card-trip-infos">
+      <div>
+        <h2>Morning Yoga</h2>
+        <p>Start your day right with an early bird yoga session</p>
+      </div>
+      <h2 class="card-trip-pricing">€12,-</h2>
+      <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+    </div>
+  </div>
+
+  <div class="card-trip">
+    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+    <div class="card-trip-infos">
+      <div>
+        <h2>Pilates Workout</h2>
+        <p>Get in shape with a sweaty Pilates session</p>
+      </div>
+      <h2 class="card-trip-pricing">€15,-</h2>
+      <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+    </div>
   </div>
 </div>
 
-<div class="card-trip">
-  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
-  <div class="card-trip-infos">
-    <div>
-      <h2>Title here</h2>
-      <p>Short description here!</p>
-    </div>
-    <h2 class="card-trip-pricing">£99.99</h2>
-    <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
-  </div>
-</div>
-
-<div class="card-trip">
-  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
-  <div class="card-trip-infos">
-    <div>
-      <h2>Title here</h2>
-      <p>Short description here!</p>
-    </div>
-    <h2 class="card-trip-pricing">£99.99</h2>
-    <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
-  </div>
+<div class="footer-spacing">
+  <%= render "./shared/footer" %>
 </div>
