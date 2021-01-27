@@ -1,16 +1,17 @@
-<h1>This is our Yogaclasses index page</h1>
+<h1>Yoga classes will be listed below:</h1>
 
-<% @yogaclasses.each do |yogaclass| %>
+<div class="cards">
+  <% @yogaclasses.each do |yogaclass| %>
   <div class="card-trip">
-    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+    <%= image_tag 'yoga-at-the-beach.jpg' %>
     <div class="card-trip-infos">
       <div>
-        <h2><%= yogaclass.title %></h2>
-        <p><%= yogaclass.address %></p>
-        <p><%= yogaclass.duration %></p>
+        <h2>%= yogaclass.title %></h2>
+        <p><%= yogaclass.address %>/p>
       </div>
       <h2 class="card-trip-pricing">€<%= yogaclass.price %></h2>
-      <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+<!--       <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" /> -->
     </div>
   </div>
-<% end %>
+  <% end %>
+</div>
