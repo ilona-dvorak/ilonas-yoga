@@ -5,4 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :yogaclasses
   has_many :bookings
+
+  USER_TYPES = ['Student', 'Teacher']
+  validates :user_type, presence: true, inclusion: { in: USER_TYPES, allow_nil: false }
 end
