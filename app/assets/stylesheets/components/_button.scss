@@ -1,0 +1,40 @@
+.btn-ghost {
+  color: #4A4A4A;
+  border: 1px solid #4A4A4A;
+  padding: 8px 24px;
+  border-radius: 50px;
+  font-weight: lighter;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.btn-ghost:hover {
+  opacity: 1;
+}
+
+.btn-flat {
+  color: $grey-black;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: $minty-green;
+  transition: background 0.3s ease;
+}
+
+.btn-flat:hover {
+  background: $minty-green;
+  color: $grey-black;
+}
+
+.btn-gradient {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: linear-gradient($gold-brown, #BD9766);
+  transition: background 0.3s ease;
+  border: 1px solid #BD9766;
+}
+
+.btn-gradient:hover {
+  background: linear-gradient($gold-brown, #BD9766);
+  color: white;
+}
