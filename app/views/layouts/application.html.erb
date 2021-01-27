@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>IlonasYoga</title>
+    <title>Ilonas Yoga</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -15,6 +15,7 @@
   <body style="background-color: #f5f4f4">
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+    <%= render "./shared/navbar" %>
 
     <%= yield %>
   </body>

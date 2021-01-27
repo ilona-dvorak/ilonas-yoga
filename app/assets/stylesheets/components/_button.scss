@@ -29,12 +29,12 @@
   color: white;
   padding: 8px 24px;
   border-radius: 4px;
-  background: linear-gradient($gold-brown, $gold-brown);
+  background: linear-gradient($gold-brown, #BD9766);
   transition: background 0.3s ease;
-  border: 1px solid $gold-brown;
+  border: 1px solid #BD9766;
 }
 
 .btn-gradient:hover {
-  background: linear-gradient($gold-brown, $gold-brown);
+  background: linear-gradient($gold-brown, #BD9766);
   color: white;
 }
