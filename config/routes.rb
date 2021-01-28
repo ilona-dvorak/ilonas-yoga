@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   resources :bookings, only: [:index]
 
-  resources :yogaclasses, only: [:index]
+  resources :yogaclasses, only: [:index, :show]
+
+  # resources :users, only: [:index, :show]
 
 end
