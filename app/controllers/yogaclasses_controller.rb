@@ -1,4 +1,5 @@
 class YogaclassesController < ApplicationController
+
   def index
     @yogaclasses = Yogaclass.all
   end
@@ -7,6 +8,11 @@ class YogaclassesController < ApplicationController
     @yogaclass = Yogaclass.new
   end
 
+  def show
+    @yogaclass = Yogaclass.find(params[:id])
+    # @yogaclasses = @Yogaclass.yogaclasses
+  end
+  
   def create
     @user = current_user
     @yogaclass = Yogaclass.new(yogaclass_params)
@@ -23,4 +29,3 @@ class YogaclassesController < ApplicationController
   def yogaclass_params
     params.require(:yogaclass).permit(:price, :class_type, :address, :start_at, :duration, :title)
   end
-end
