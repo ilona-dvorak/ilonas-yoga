@@ -1,21 +1,24 @@
 <p> Show page</p>
 
   <div class="container">
-    <h1> <%= @Yogaclass.name %> </h1>
-    <%= link_to 'Edit', edit_yogaclass_path(@yogaclass), class: "btn btn-primary" %>
-    <%= link_to 'Back', yogaclass_path, class: "btn btn-primary" %>
+    <h2>%= yogaclass.title %></h2>
+    <!--%= link_to 'Edit', edit_yogaclass_path(@yogaclass), class: "btn btn-primary" %-->
   </div>
 
 <div class="cards">
 
-  <% @yogaclasses.each do |yogaclass| %>
-    <div class="yoga-class">
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= yogaclass.image_url %>)">
-        <%= yogaclass.name %>
-        <%= link_to "❌", yogaclass_path(yogaclass), method: :delete, data: { confirm: 'are you sure?' }, class: "btn-delete" %>
+
+      <div class="card-trip" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3))">
+        <%= image_tag 'pilates-session.jpg' %>
+
+         <div>
+        <h2>%= yogaclass.title %></h2>
+
+      </div>
+        <!--%= link_to "❌", yogaclass_path(yogaclass), method: :delete, data: { confirm: 'are you sure?' }, class: "btn-delete" %-->
       </div>
 
     </div>
-  <% end %>
 
 </div>
+
