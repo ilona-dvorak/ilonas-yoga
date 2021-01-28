@@ -27,6 +27,6 @@ class YogaclassesController < ApplicationController
   private
 
   def yogaclass_params
-    params.require(:yogaclass).permit(:price, :class_type, :address, :start_at, :duration, :title)
+    params.require(:yogaclass).permit(:price, :class_type, :address, :start_at, :duration, :title, :photo)
   end
 end

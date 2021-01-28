@@ -1,8 +1,7 @@
 class Yogaclass < ApplicationRecord
   belongs_to :user
-  has_many :bookings
   has_one_attached :photo
-  # Do not forget to add ":photo" in the params when working on the controller!
+  has_many :bookings
 
   CLASS_TYPES = ['Yoga-Beginner', 'Yoga-Intermediate', 'Yoga-Advanced', 'Pilates-Beginner', 'Pilates-Intermediate', 'Pilates-Advanced']
   validates :title, presence: true
