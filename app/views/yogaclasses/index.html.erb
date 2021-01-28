@@ -6,7 +6,7 @@
     <%= image_tag 'yoga-at-the-beach.jpg' %>
     <div class="card-trip-infos">
       <div>
-        <h2><%= yogaclass.title %></h2>
+        <h2><%= link_to yogaclass.title, yogaclass_path(yogaclass) %></h2>
         <p><%= yogaclass.address %></p>
       </div>
       <h2 class="card-trip-pricing">€<%= yogaclass.price %></h2>
