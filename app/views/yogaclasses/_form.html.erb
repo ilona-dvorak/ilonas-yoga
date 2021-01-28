@@ -1,0 +1,9 @@
+<%= simple_form_for(@yogaclass) do |f| %>
+  <%= f.input :title %>
+  <%= f.input :class_type, collection: Yogaclass::CLASS_TYPES %>
+  <%= f.input :price %>
+  <%= f.input :address %>
+  <%= f.input :start_at %>
+  <%= f.input :duration %>
+  <%= f.button :submit, 'Create Yogaclass', class: 'btn-gradient' %>
+<% end %>
