@@ -1,4 +1,5 @@
 class YogaclassesController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
     @yogaclasses = Yogaclass.all
@@ -18,7 +19,7 @@ class YogaclassesController < ApplicationController
     @yogaclass = Yogaclass.new(yogaclass_params)
     @yogaclass.user = @user
     if @yogaclass.save
-      redirect_to root_path
+      redirect_to yogaclass_path(@yogaclass)
     else
       render :new
     end
