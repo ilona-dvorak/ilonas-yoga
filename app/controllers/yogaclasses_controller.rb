@@ -11,7 +11,6 @@ class YogaclassesController < ApplicationController
 
   def show
     @yogaclass = Yogaclass.find(params[:id])
-    # @yogaclasses = @Yogaclass.yogaclasses
   end
 
   def create
