@@ -18,7 +18,7 @@ class YogaclassesController < ApplicationController
     @yogaclass = Yogaclass.new(yogaclass_params)
     @yogaclass.user = @user
     if @yogaclass.save
-      redirect_to root_path
+      redirect_to yogaclasses_path
     else
       render :new
     end
