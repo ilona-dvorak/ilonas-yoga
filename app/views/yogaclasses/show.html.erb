@@ -1,24 +1,7 @@
-<p> Show page</p>
+<%= render './shared/showbanner' %>
 
-  <div class="container">
-    <h2>%= yogaclass.title %></h2>
-    <!--%= link_to 'Edit', edit_yogaclass_path(@yogaclass), class: "btn btn-primary" %-->
-  </div>
+  <!--%= link_to 'Edit', edit_yogaclass_path(@yogaclass), class: "btn btn-primary" %-->
+  <!--%= link_to "❌", yogaclass_path(yogaclass), method: :delete, data: { confirm: 'are you sure?' }, class: "btn-delete" %-->
 
-<div class="cards">
-
-
-      <div class="card-trip" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3))">
-        <%= image_tag 'pilates-session.jpg' %>
-
-         <div>
-        <h2>%= yogaclass.title %></h2>
-
-      </div>
-        <!--%= link_to "❌", yogaclass_path(yogaclass), method: :delete, data: { confirm: 'are you sure?' }, class: "btn-delete" %-->
-      </div>
-
-    </div>
-
-</div>
-
+<h2>Book this class</h2>
+<%= render './bookings/form' %>
