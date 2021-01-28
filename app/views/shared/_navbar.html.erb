@@ -12,7 +12,17 @@
         <%= link_to "Home", "/", class: "nav-link" %>
       </li>
       <li class="nav-item active">
-        <%= link_to "Log in", "/users/sign_in", class: "nav-link" %>
+        <%= link_to "All Classes", "/yogaclasses", class: "nav-link" %>
+      </li>
+      <li class="nav-item active">
+        <%= link_to "Offer Class", "/yogaclasses/new", class: "nav-link" %>
+      </li>
+      <li class="nav-item active">
+        <% if user_signed_in? %>
+          <%= link_to "Sign out", destroy_user_session_path, :method => :delete, class: "nav-link" %>
+        <% else %>
+          <%= link_to "Log in", "/users/sign_in", class: "nav-link" %>
+        <% end %>
       </li>
     </ul>
   </div>
