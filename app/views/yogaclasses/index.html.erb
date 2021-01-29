@@ -5,7 +5,7 @@
   <div class="card-trip">
     <%= link_to yogaclass_path(yogaclass) do %>
       <% if yogaclass.photo.attached? %>
-        <%= cl_image_tag yogaclass.photo.key %>
+        <%= cl_image_tag yogaclass.photo.key, height: 200, crop: :fit %>
       <% else %>
         <%= image_tag 'yoga-at-the-beach.jpg' %>
       <% end %>
