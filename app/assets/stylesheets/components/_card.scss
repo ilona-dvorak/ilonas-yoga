@@ -20,6 +20,8 @@
   font-size: 12px;
   opacity: .7;
   margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .card-trip .card-trip-infos {
