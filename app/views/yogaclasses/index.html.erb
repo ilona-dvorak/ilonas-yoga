@@ -5,7 +5,7 @@
       <% if yogaclass.photo.attached? %>
         <%= cl_image_tag yogaclass.photo.key, height: 200, crop: :fit %>
       <% else %>
-        <img src="https://source.unsplash.com/400x200/?yoga" alt="Yoga Classes with Ilona">
+        <%= image_tag "yoga-at-the-beach.jpg" %>
       <% end %>
     <% end %>
     <div class="card-trip-infos">
