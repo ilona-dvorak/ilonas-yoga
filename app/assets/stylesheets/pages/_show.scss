@@ -1,9 +1,9 @@
-
 .main-container {
-display: flex;
-flex-direction: row;
-justify-content: space-between;
-padding-left: 250px
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  // padding-left: 250px
+  flex-wrap: wrap;
 }
 
 .title h4 {
@@ -13,32 +13,31 @@ padding-left: 250px
 }
 
 .container-description h3 {
-color: $gold-brown;
-font-size: 30px;
-padding-top: 16px;
-padding-left: 24px;
+  color: $gold-brown;
+  font-size: 30px;
+  padding-top: 16px;
+  padding-left: 24px;
 }
 
 .container h5 {
-padding-top: 32px;
-font-size: 20px;
-padding-left: 16px;
-padding-right: 16px;
+  padding-top: 32px;
+  font-size: 20px;
+  padding-left: 16px;
+  padding-right: 16px;
 }
 
 .card-description {
-width: 800px;
-height: 420px;
-padding-top: 16px;
-padding-left: 16px;
-padding-right: 16px;
-background: white;
-box-shadow: 0 0 15px rgba(0,0,0,0.2);
-overflow: hidden;
+  width: 60%;
+  padding-top: 16px;
+  padding-left: 16px;
+  padding-right: 16px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  overflow: hidden;
 }
+
 .card-sidebar {
-  width: 280px;
-  height: 420px;
+  width: 35%;
   background: white;
   font-size: 16px;
   padding-left: 32px;
@@ -60,9 +59,3 @@ overflow: hidden;
   justify-content: space-between;
   align-items: flex-end;
 }
-
-
-
-
-
-
