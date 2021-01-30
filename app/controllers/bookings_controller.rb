@@ -1,33 +1,44 @@
 class BookingsController < ApplicationController
+  before_action :set_booking, only: [:show, :destroy]
 
   def index
-    @bookings = Booking.all
+    @user = current_user
+    @bookings = @user.bookings
+  end
+
+  def show
   end
 
   def new
-    @booking = Booking.new
     @yogaclass = Yogaclass.find(params[:yogaclass_id])
+    @booking = Booking.new
   end
 
   def create
-    @user = current_user
+    @booking = Booking.new
+
     @yogaclass = Yogaclass.find(params[:yogaclass_id])
-    @booking = Booking.new(booking_params)
-    @booking.user = @user
     @booking.yogaclass = @yogaclass
+
+    @user = current_user
+    @booking.user = @user
+
     if @booking.save
-      redirect_to root
+      redirect_to yogaclass_path(@yogaclass)
     else
       render :new
     end
   end
 
   def destroy
+    @yogaclass = @booking.yogaclass
+    @booking.destroy
+    redirect_to yogaclass_path(@yogaclass)
   end
 
   private
 
-  def booking_params
-    params.require(:booking).permit()
+  def set_booking
+    @booking = Booking.find(params[:id])
   end
 end

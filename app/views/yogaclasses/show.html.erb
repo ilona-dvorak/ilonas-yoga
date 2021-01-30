@@ -4,4 +4,4 @@
   <!--%= link_to "❌", yogaclass_path(yogaclass), method: :delete, data: { confirm: 'are you sure?' }, class: "btn-delete" %-->
 
 <h2>Book this class</h2>
-<%= render './bookings/form' %>
+<%= link_to 'Book', yogaclass_bookings_path(@yogaclass), method: :POST %>
