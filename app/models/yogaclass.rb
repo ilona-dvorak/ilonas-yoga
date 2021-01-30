@@ -5,6 +5,7 @@ class Yogaclass < ApplicationRecord
 
   CLASS_TYPES = ['Yoga-Beginner', 'Yoga-Intermediate', 'Yoga-Advanced', 'Pilates-Beginner', 'Pilates-Intermediate', 'Pilates-Advanced']
   validates :title, presence: true
+  validates :description, presence: true
   validates :price, presence: true
   validates :class_type, inclusion: { in: CLASS_TYPES, allow_nil: false }
   validates :address, presence: true

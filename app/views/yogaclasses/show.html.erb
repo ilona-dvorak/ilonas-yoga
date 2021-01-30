@@ -19,19 +19,14 @@
 
 <div class="card-sidebar" style ="width: 280px;height: 420px;background: white;font-size: 16px;padding-left: 32px;box-shadow: 0 0 15px rgba(0,0,0,0.2); overflow: hidden;padding-top: 8px; padding-bottom: 8px">
  <div class="title" style ="padding-top: 16px; padding-bottom: 32px"> <h4>Booking Details</h4></div>
-
       <p><i class="fas fa-map-marked pr-3"> </i><%=@yogaclass.address%></p>
       <p><i class="fas fa-calendar-day pr-3"></i><%=@yogaclass.start_at%></p>
       <p><i class="fas fa-history pr-3"></i><%= @yogaclass.duration%></p>
       <p><i class="fas fa-dollar-sign pr-3"></i><%= @yogaclass.price%></p>
-    <div class="book-class"><h4>Book this class</h4></div>
-
+      <%= link_to 'Book', yogaclass_bookings_path(@yogaclass), method: :POST %>
+ </div>
 </div>
-
 </div>
-
-</div>
-
 
 <!--%= link_to 'Edit', edit_yogaclass_path(@yogaclass), class: "btn btn-primary" %-->
-  <!--%= link_to "❌", yogaclass_path(yogaclass), method: :delete, data: { confirm: 'are you sure?' }, class: "btn-delete" %-->
+<!--%= link_to "❌", yogaclass_path(yogaclass), method: :delete, data: { confirm: 'are you sure?' }, class: "btn-delete" %-->
