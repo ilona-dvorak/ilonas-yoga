@@ -27,11 +27,10 @@ class YogaclassesController < ApplicationController
   end
 
   def destroy
-      @yogaclass = Yogaclass.find(params[:id])
-      @yogaclass.destroy
-      redirect_to yogaclass_path(@yogaclass)
-    end
-
+    @yogaclass = Yogaclass.find(params[:id])
+    @yogaclass.destroy
+    redirect_to yogaclass_path(@yogaclass)
+  end
 
   private
 
