@@ -1,0 +1,12 @@
+<div class="form-container">
+  <h1>Here are all your bookings:</h1>
+  <% @bookings.each do |booking| %>
+  <div class="card-product">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Vrksasana.jpg" />
+    <div class="card-product-infos">
+      <h2><%= booking.yogaclass.title %></h2>
+      <p><%= booking.yogaclass.description %></</p>
+    </div>
+  </div>
+  <% end %>
+</div>
