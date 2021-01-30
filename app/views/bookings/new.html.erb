@@ -2,6 +2,6 @@
   <h2>Book this class</h2>
   <%= @yogaclass.title %>
   <div class="form-card">
-    <%= render 'form' %>
+    <%= link_to 'Book', yogaclass_bookings_path(@yogaclass), method: :POST %>
   </div>
 </div>

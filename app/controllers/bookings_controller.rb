@@ -7,6 +7,8 @@ class BookingsController < ApplicationController
   end
 
   def show
+    @yogaclass = Yogaclass.find(params[:yogaclass_id])
+    @booking = Booking.find(params[:id])
   end
 
   def new
@@ -24,7 +26,7 @@ class BookingsController < ApplicationController
     @booking.user = @user
 
     if @booking.save
-      redirect_to yogaclass_path(@yogaclass)
+      redirect_to yogaclass_booking_path(@yogaclass, @booking)
     else
       render :new
     end
