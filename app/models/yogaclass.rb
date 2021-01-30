@@ -9,4 +9,5 @@ class Yogaclass < ApplicationRecord
   validates :class_type, inclusion: { in: CLASS_TYPES, allow_nil: false }
   validates :address, presence: true
   validates :duration, presence: true
+  validates :description, presence: true
 end

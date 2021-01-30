@@ -25,9 +25,16 @@ class YogaclassesController < ApplicationController
     end
   end
 
+  def destroy
+      @yogaclass = Yogaclass.find(params[:id])
+      @yogaclass.destroy
+      redirect_to yogaclass_path(@yogaclass)
+    end
+
+
   private
 
   def yogaclass_params
-    params.require(:yogaclass).permit(:price, :class_type, :address, :start_at, :duration, :title, :photo)
+    params.require(:yogaclass).permit(:price, :class_type, :address, :start_at, :duration, :title, :photo, :description)
   end
 end
