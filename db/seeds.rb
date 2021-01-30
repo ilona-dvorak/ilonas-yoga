@@ -40,9 +40,11 @@ DURATION = [0.5, 1, 1.5, 2]
   price: "#{rand(10..20)}",
   class_type: TYPES.sample,
   address: Faker::Address.full_address,
-  duration: DURATION.sample
+  duration: DURATION.sample,
+  start_at: Time.now + 1.days
 )
 @yoga_one.user = @user_seven
+# @yoga_one.photo.key = Y
 @yoga_one.save!
 
 puts "Created #{@yoga_one.title}!"
@@ -53,9 +55,11 @@ puts "Created #{@yoga_one.title}!"
   price: "#{rand(10..20)}",
   class_type: TYPES.sample,
   address: Faker::Address.full_address,
-  duration: DURATION.sample
+  duration: DURATION.sample,
+  start_at: Time.now + 2.days
 )
 @yoga_two.user = @user_seven
+# @yoga_two.photo.key = "yoga-6_lba8gf"
 @yoga_two.save!
 
 puts "Created #{@yoga_two.title}!"
@@ -66,9 +70,11 @@ puts "Created #{@yoga_two.title}!"
   price: "#{rand(10..20)}",
   class_type: TYPES.sample,
   address: Faker::Address.full_address,
-  duration: DURATION.sample
+  duration: DURATION.sample,
+  start_at: Time.now + 2.days
 )
 @yoga_three.user = @user_eight
+# @yoga_three.photo.key = "yoga-8_ie7lwe"
 @yoga_three.save!
 
 puts "Created #{@yoga_three.title}!"
@@ -79,9 +85,11 @@ puts "Created #{@yoga_three.title}!"
   price: "#{rand(10..20)}",
   class_type: TYPES.sample,
   address: Faker::Address.full_address,
-  duration: DURATION.sample
+  duration: DURATION.sample,
+  start_at: Time.now + 3.days
 )
 @yoga_four.user = @user_eight
+# @yoga_four.photo.key = "yoga-5_ujul32"
 @yoga_four.save!
 
 puts "Created #{@yoga_four.title}!"
@@ -92,9 +100,11 @@ puts "Created #{@yoga_four.title}!"
   price: "#{rand(10..20)}",
   class_type: TYPES.sample,
   address: Faker::Address.full_address,
-  duration: DURATION.sample
+  duration: DURATION.sample,
+  start_at: Time.now + 3.days
 )
 @yoga_five.user = @user_nine
+# @yoga_five.photo.key = "yoga-4_etjz8z"
 @yoga_five.save!
 
 puts "Created #{@yoga_five.title}!"
@@ -105,9 +115,11 @@ puts "Created #{@yoga_five.title}!"
   price: "#{rand(10..20)}",
   class_type: TYPES.sample,
   address: Faker::Address.full_address,
-  duration: DURATION.sample
+  duration: DURATION.sample,
+  start_at: Time.now + 4.days
 )
 @yoga_six.user = @user_nine
+# @yoga_six.photo.key = "yoga-7_hl5exw"
 @yoga_six.save!
 
 puts "Created #{@yoga_six.title}!"
@@ -118,9 +130,11 @@ puts "Created #{@yoga_six.title}!"
   price: "#{rand(10..20)}",
   class_type: TYPES.sample,
   address: Faker::Address.full_address,
-  duration: DURATION.sample
+  duration: DURATION.sample,
+  start_at: Time.now + 4.days
 )
 @yoga_seven.user = @user_ten
+# @yoga_seven.photo.key = "yoga-3_jcgis9"
 @yoga_seven.save!
 
 puts "Created #{@yoga_seven.title}!"
@@ -131,9 +145,11 @@ puts "Created #{@yoga_seven.title}!"
   price: "#{rand(10..20)}",
   class_type: TYPES.sample,
   address: Faker::Address.full_address,
-  duration: DURATION.sample
+  duration: DURATION.sample,
+  start_at: Time.now + 5.days
 )
 @yoga_eight.user = @user_ten
+# @yoga_eight.photo.key = "yoga-2_zslapu"
 @yoga_eight.save!
 
 puts "Created #{@yoga_eight.title}!"
