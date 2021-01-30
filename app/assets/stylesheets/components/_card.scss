@@ -8,7 +8,6 @@
   width: 100%;
 }
 
-
 .card-trip {
   overflow: hidden;
   background: white;
@@ -63,13 +62,13 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
   align-items: center;
+  margin-bottom: 16px;
 }
 
 .card-product img {
   height: 100%;
   width: 120px;
   object-fit: cover;
-  padding-bottom: 16px;
 }
 
 .card-product h2 {
@@ -92,21 +91,21 @@
 
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {
-  .cards {
+  .cards, .yogaclass-cards {
     grid-template-columns: 1fr;
   }
 }
 
 // Small devices (landscape phones, 576px and up)
 @media (min-width: 576px) {
-  .cards {
+  .cards, .yogaclass-cards {
     grid-template-columns: 1fr;
   }
 }
 
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) {
-  .cards {
+  .cards, .yogaclass-cards {
     grid-template-columns: 1fr 1fr;
   }
 }
@@ -125,9 +124,10 @@
   }
 }
 
-
-
-
-
-
-
+.yogaclass-cards {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-gap: 16px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
