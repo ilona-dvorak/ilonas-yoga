@@ -1,7 +1,32 @@
-<%= render './shared/showbanner' %>
+<!--%= render './shared/showbanner' %-->
+<div class="showbanner" style=" background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= asset_path 'banner.jpg' %>);height: 380px">
+  <div class="container" style = "padding-top: 96px;">
+    <h1> <%= @yogaclass.title %> </h1>
+  </div>
+</div>
 
-  <!--%= link_to 'Edit', edit_yogaclass_path(@yogaclass), class: "btn btn-primary" %-->
-  <!--%= link_to "❌", yogaclass_path(yogaclass), method: :delete, data: { confirm: 'are you sure?' }, class: "btn-delete" %-->
+<div class = main-container style="display: flex; flex-direction: row; justify-content: space-between;padding-left: 250px">
 
-<h2>Book this class</h2>
-<%= link_to 'Book', yogaclass_bookings_path(@yogaclass), method: :POST %>
+
+<div class="cards-show">
+
+  <div class="card-description"style= "width: 800px;height: 420px;padding-top: 16px;padding-left: 16px; padding-right: 16px;background: white;box-shadow: 0 0 15px rgba(0,0,0,0.2); overflow: hidden;">
+      <div class = "container "><h3>Class Description</h3></div>
+      <div class = "container" style= "padding-top: 32px;"><h5><%= @yogaclass.description %></h5></div>
+  </div>
+
+
+
+<div class="card-sidebar" style ="width: 280px;height: 420px;background: white;font-size: 16px;padding-left: 32px;box-shadow: 0 0 15px rgba(0,0,0,0.2); overflow: hidden;padding-top: 8px; padding-bottom: 8px">
+ <div class="title" style ="padding-top: 16px; padding-bottom: 32px"> <h4>Booking Details</h4></div>
+      <p><i class="fas fa-map-marked pr-3"> </i><%=@yogaclass.address%></p>
+      <p><i class="fas fa-calendar-day pr-3"></i><%=@yogaclass.start_at%></p>
+      <p><i class="fas fa-history pr-3"></i><%= @yogaclass.duration%></p>
+      <p><i class="fas fa-dollar-sign pr-3"></i><%= @yogaclass.price%></p>
+      <%= link_to 'Book', yogaclass_bookings_path(@yogaclass), method: :POST %>
+ </div>
+</div>
+</div>
+
+<!--%= link_to 'Edit', edit_yogaclass_path(@yogaclass), class: "btn btn-primary" %-->
+<!--%= link_to "❌", yogaclass_path(yogaclass), method: :delete, data: { confirm: 'are you sure?' }, class: "btn-delete" %-->

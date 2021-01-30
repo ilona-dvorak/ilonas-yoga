@@ -1,3 +1,14 @@
+.cards-show {
+  padding: 30px;
+  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 200px;
+  position: relative;
+  width: 100%;
+}
+
+
 .card-trip {
   overflow: hidden;
   background: white;
@@ -79,3 +90,10 @@
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
+
+
+
+
+
+
+
