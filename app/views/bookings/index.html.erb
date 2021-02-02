@@ -2,7 +2,11 @@
   <h2>Here are all your bookings</h2>
   <% @bookings.each do |booking| %>
   <div class="card-product">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Vrksasana.jpg" />
+    <% if booking.yogaclass.photo.attached? %>
+      <%= cl_image_tag booking.yogaclass.photo.key, height: 200, crop: :fit %>
+    <% else %>
+      <%= image_tag "yoga-at-the-beach.jpg" %>
+    <% end %>
     <div class="card-product-infos">
       <h2><%= booking.yogaclass.title %></h2>
       <p><%= booking.yogaclass.description %></</p>
@@ -10,3 +14,5 @@
   </div>
   <% end %>
 </div>
+
+

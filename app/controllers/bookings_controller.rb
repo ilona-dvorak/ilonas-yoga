@@ -1,25 +1,22 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: [:show, :destroy]
+  before_action :set_yogaclass_id, only: [:show, :new, :create]
 
   def index
-    @user = current_user
-    @bookings = @user.bookings
+    @bookings = policy_scope(Booking).order(created_at: :desc)
   end
 
   def show
-    @yogaclass = Yogaclass.find(params[:yogaclass_id])
-    @booking = Booking.find(params[:id])
   end
 
   def new
-    @yogaclass = Yogaclass.find(params[:yogaclass_id])
     @booking = Booking.new
+    authorize @booking
   end
 
   def create
     @booking = Booking.new
-
-    @yogaclass = Yogaclass.find(params[:yogaclass_id])
+    authorize @booking
     @booking.yogaclass = @yogaclass
 
     @user = current_user
@@ -40,7 +37,12 @@ class BookingsController < ApplicationController
 
   private
 
+  def set_yogaclass_id
+    @yogaclass = Yogaclass.find(params[:yogaclass_id])
+  end
+
   def set_booking
     @booking = Booking.find(params[:id])
+    authorize @booking
   end
 end
