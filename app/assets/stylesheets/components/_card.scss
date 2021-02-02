@@ -14,6 +14,10 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
+.card-trip:hover {
+  box-shadow: 0 0 25px rgba(0,0,0,0.3);
+}
+
 .card-trip img {
   height: 200px;
   width: 100%;
@@ -42,6 +46,15 @@
   position: relative;
 }
 
+.yogaclass-info a {
+  color: #BD9766;
+}
+
+.yogaclass-info a:hover {
+  color: #A77638;
+  text-decoration: none;
+}
+
 .card-trip-infos .card-trip-user {
   position: absolute;
   right: 16px;
@@ -64,6 +77,10 @@
   display: flex;
   align-items: center;
   margin-bottom: 16px;
+}
+
+.card-product:hover {
+  box-shadow: 0 0 25px rgba(0,0,0,0.3);
 }
 
 .card-product img {
