@@ -13,12 +13,12 @@
   </head>
 
   <body style="background-color: #f5f4f4">
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= render "./shared/navbar" %>
-
-    <%= yield %>
-
-    <%= render "./shared/footer" %>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+    <div class="page-container">
+      <div class="navbar-container"><%= render "shared/navbar" %></div>
+      <div class="content-container"><%= yield %></div>
+      <div class="footer-container"><%= render "shared/footer" %></div>
+    </div>
   </body>
 </html>
