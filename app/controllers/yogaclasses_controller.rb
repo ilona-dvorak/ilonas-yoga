@@ -5,6 +5,13 @@ class YogaclassesController < ApplicationController
   def index
     # @yogaclasses = Yogaclass.all
     @yogaclasses = policy_scope(Yogaclass).order(created_at: :desc)
+
+    if params[:query].present?
+      @yogaclasses = Yogaclass.global_search(params[:query])
+    else
+      @yogaclasses = Yogaclass.all
+    end
+
   end
 
   def new
