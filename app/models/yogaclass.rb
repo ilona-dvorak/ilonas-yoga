@@ -3,6 +3,16 @@ class Yogaclass < ApplicationRecord
   has_one_attached :photo
   has_many :bookings
 
+include PgSearch::Model
+  pg_search_scope :global_search,
+    against: [:title, :address],
+    associated_against: {
+    user: [:first_name, :last_name]
+    },
+   using: {
+      tsearch: { prefix: true }
+   }
+
   CLASS_TYPES = ['Yoga-Beginner', 'Yoga-Intermediate', 'Yoga-Advanced', 'Pilates-Beginner', 'Pilates-Intermediate', 'Pilates-Advanced']
   validates :title, presence: true
   validates :description, presence: true
@@ -10,4 +20,12 @@ class Yogaclass < ApplicationRecord
   validates :class_type, inclusion: { in: CLASS_TYPES, allow_nil: false }
   validates :address, presence: true
   validates :duration, presence: true
+
+# include PgSearch::Model
+# pg_search_scope :search_by_title_and_address,
+# against: [:title, :address],
+# using: {
+# tsearch: { prefix: true } # <-- now `superman batm` will return something!
+#  }
+
 end

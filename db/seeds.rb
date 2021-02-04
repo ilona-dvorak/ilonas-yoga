@@ -9,8 +9,14 @@ require 'json'
 require 'open-uri'
 require 'faker'
 
-User.destroy_all
+Booking.destroy_all
+puts "Bookings are deleted"
+
 Yogaclass.destroy_all
+puts "Yogaclasses are deleted"
+
+User.destroy_all
+puts "Users are deleted"
 
 puts "Creating users..."
 
