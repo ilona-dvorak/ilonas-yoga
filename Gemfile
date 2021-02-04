@@ -34,6 +34,7 @@ gem 'simple_form'
 gem 'devise'
 gem 'faker'
 gem 'pundit'
+gem 'pg_search', '~> 2.3.0'
 
 # Gemfile
 gem 'cloudinary', '~> 1.16.0'
