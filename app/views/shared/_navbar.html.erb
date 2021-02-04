@@ -25,10 +25,10 @@
       <li class="nav-item active">
         <% if user_signed_in? %>
 
-           <% if current_user.photo.attached? %>
-                <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown" %>
-             <% else %>
-        <%= image_tag "yoga-at-the-beach.jpg" %>
+      <% if current_user.photo.attached? %>
+        <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown" %>
+      <% else %>
+        <%= image_tag "yoga-at-the-beach.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown" %>
       <% end %>
 
       <%= link_to "Sign out", destroy_user_session_path, :method => :delete, class: "nav-link" %>
