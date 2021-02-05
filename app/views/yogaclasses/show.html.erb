@@ -17,6 +17,14 @@
         <%= link_to 'Cancel', yogaclass_path(@yogaclass), method: :delete, data: { confirm: 'Do you really want to cancel this class?' }, class: "btn btn-ghost" %>
       <% end %>
     </div>
+    <% if @yogaclass.user == current_user %>
+        <h3><%= @bookings.count %> Participants:</h3>
+        <ul>
+          <% @bookings.each do |booking| %>
+            <li> <%= booking.user.first_name %> <%= booking.user.last_name %> </li>
+          <% end %>
+        </ul>
+    <% end %>
   </div>
 
   <div class="card-info">
@@ -31,6 +39,7 @@
       <% end %>
     </div>
   </div>
+
 
 </div>
 
