@@ -25,6 +25,12 @@
   color: $grey-black;
 }
 
+.btn-flat:active {
+  background: $minty-green;
+  color: $grey-black;
+  border: 1px solid #BD9766;
+}
+
 .btn-gradient {
   color: white;
   padding: 8px 24px;
@@ -35,6 +41,6 @@
 }
 
 .btn-gradient:hover {
-  background: linear-gradient($gold-brown, #BD9766);
+  background: linear-gradient(#BD9766, #BD9766);
   color: white;
 }

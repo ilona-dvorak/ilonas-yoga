@@ -3,5 +3,6 @@ class PagesController < ApplicationController
 
   def home
     @yogaclasses = Yogaclass.last(3).reverse
+    @user = current_user
   end
 end
