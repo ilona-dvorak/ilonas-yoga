@@ -3,10 +3,12 @@ class BookingsController < ApplicationController
   before_action :set_yogaclass_id, only: [:show, :new, :create]
 
   def index
+    @user = current_user
     @bookings = policy_scope(Booking).order(created_at: :desc)
   end
 
   def show
+    @user = current_user
   end
 
   def new

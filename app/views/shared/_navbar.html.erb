@@ -5,37 +5,41 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
         <%= link_to "Home", "/", class: "nav-link" %>
       </li>
-      <li class="nav-item active">
+      <li class="nav-item">
         <%= link_to "All Classes", "/yogaclasses", class: "nav-link" %>
       </li>
-      <li class="nav-item active">
-        <%= link_to "Offer Class", "/yogaclasses/new", class: "nav-link" %>
+      <li class="nav-item">
+        <%if user_signed_in? %>
+          <% if @user.user_type == "Teacher" %>
+            <%= link_to "Offer Class", "/yogaclasses/new", class: "nav-link" %>
+          <% end %>
+        <% end %>
       </li>
-      <li class="nav-item active">
+      <li class="nav-item">
         <% if user_signed_in? %>
           <%= link_to "All My Bookings", "/yogaclasses/:yogaclass_id/bookings", class: "nav-link" %>
         <% end %>
       </li>
-      <li class="nav-item active">
+      <li class="nav-item" id="divide">
         <% if user_signed_in? %>
-
-      <% if current_user.photo.attached? %>
-        <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown" %>
-      <% else %>
-        <%= image_tag "yoga-at-the-beach.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown" %>
-      <% end %>
-
-      <%= link_to "Sign out", destroy_user_session_path, :method => :delete, class: "nav-link" %>
+          <%= link_to "Sign out", destroy_user_session_path, :method => :delete, class: "nav-link" %>
         <% else %>
           <%= link_to "Log in", "/users/sign_in", class: "nav-link" %>
         <% end %>
-
+      </li>
+      <li class="nav-item">
+        <% if user_signed_in? %>
+          <% if current_user.photo.attached? %>
+              <%= cl_image_tag current_user.photo.key, class: "avatar-bordered"%>
+          <% else %>
+              <%= image_tag "avatar-placeholder.jpg", class: "avatar-bordered"%>
+          <% end %>
+        <% end %>
       </li>
     </ul>
   </div>

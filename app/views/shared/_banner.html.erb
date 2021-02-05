@@ -1,7 +1,10 @@
-  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= asset_path 'banner.jpg' %>);">
-  <div class="container">
+<!--   <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= asset_path 'banner.jpg' %>);"> -->
+<div class="banner">
+  <%= video_tag "yoga-video.mp4", autoplay: :autoplay, loop: :loop, muted: :muted, class: "home_video" %>
+  <div class="banner-content">
     <h1>Your Yoga</h1>
     <p>Find or Offer Yoga & Pilates Classes <br>- All Around the World</p>
-    <%= link_to "Find Now", yogaclasses_path, class: "btn btn-gradient"  %>
+    <%= render "./shared/search" %>
+    <h2><i class="fas fa-spa"></i><br><%= link_to "See all our Classes", yogaclasses_path %></h2>
   </div>
 </div>

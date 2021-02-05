@@ -3,7 +3,7 @@ class YogaclassesController < ApplicationController
   before_action :set_yogaclass, only: [:show, :destroy]
 
   def index
-    # @yogaclasses = Yogaclass.all
+    @user = current_user
     @yogaclasses = policy_scope(Yogaclass).order(created_at: :desc)
 
     if params[:query].present?
@@ -11,17 +11,18 @@ class YogaclassesController < ApplicationController
     else
       @yogaclasses = Yogaclass.all
     end
-
   end
 
   def new
     @yogaclass = Yogaclass.new
     authorize @yogaclass
+    @user = current_user
   end
 
   def show
     @bookings = @yogaclass.bookings
     @booking = Booking.new
+    @user = current_user
   end
 
   def create

@@ -1,5 +1,4 @@
 <div class="form-container">
-  <h2>Here are all your bookings</h2>
   <% @bookings.each do |booking| %>
   <div class="card-product">
     <% if booking.yogaclass.photo.attached? %>
@@ -8,11 +7,11 @@
       <%= image_tag "yoga-at-the-beach.jpg" %>
     <% end %>
     <div class="card-product-infos">
-      <h2><%= booking.yogaclass.title %></h2>
-      <p><%= booking.yogaclass.description %></</p>
+      <h2><%= link_to booking.yogaclass.title, yogaclass_path(booking.yogaclass) %></h2>
+      <h3>with <%= booking.yogaclass.user.first_name %></h3>
+      <p><i class="fas fa-map-marked pr-3"></i><%= booking.yogaclass.address %></p>
+      <p><i class="fas fa-calendar-day pr-3"></i><%= booking.yogaclass.start_at %></p>
     </div>
   </div>
   <% end %>
 </div>
-
-

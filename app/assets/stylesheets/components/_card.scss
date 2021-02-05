@@ -18,7 +18,7 @@
   box-shadow: 0 0 25px rgba(0,0,0,0.3);
 }
 
-.card-trip img {
+.card-trip .card-image {
   height: 200px;
   width: 100%;
   object-fit: cover;
@@ -95,12 +95,27 @@
   margin: 0;
 }
 
+.card-product a {
+  color: #BD9766;
+}
+
+.card-product a:hover {
+  color: #A77638;
+  text-decoration: none;
+}
+
 .card-product p {
   font-size: 12px;
   line-height: 1.4;
   opacity: .7;
   margin-bottom: 0;
   margin-top: 8px;
+  color: $grey-black;
+}
+
+.card-product h3 {
+  font-size: 14px;
+  padding-top: 8px;
 }
 
 .card-product .card-product-infos {

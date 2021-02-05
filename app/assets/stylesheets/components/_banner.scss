@@ -12,16 +12,39 @@
 }
 
 .banner h1 {
-  margin: 0;
-  color: $gold-brown;
+  color: white;
+  opacity: .8;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  font-size: 32px;
+  font-size: 48px;
   font-weight: bold;
 }
 
 .banner p {
-  font-size: 20px;
-  color: $gold-brown;
-  opacity: .7;
+  color: white;
+  opacity: .8;
+  font-size: 24px;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+.banner a {
+  color: white;
+  opacity: .8;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+.banner a:hover {
+  color: $gold-brown;
+  opacity: 1;
+  text-decoration: none;
+}
+
+.banner h2 .fas {
+  color: $gold-brown;
+  opacity: 1;
+  font-size: 62px;
+}
+
+.banner-content {
+  text-align: center;
+  margin: 16px;
 }
