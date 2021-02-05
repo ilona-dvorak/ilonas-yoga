@@ -2,6 +2,7 @@ class Yogaclass < ApplicationRecord
   belongs_to :user
   has_one_attached :photo
   has_many :bookings
+  has_many :reviews, dependent: :destroy
 
 include PgSearch::Model
   pg_search_scope :global_search,
@@ -20,12 +21,4 @@ include PgSearch::Model
   validates :class_type, inclusion: { in: CLASS_TYPES, allow_nil: false }
   validates :address, presence: true
   validates :duration, presence: true
-
-# include PgSearch::Model
-# pg_search_scope :search_by_title_and_address,
-# against: [:title, :address],
-# using: {
-# tsearch: { prefix: true } # <-- now `superman batm` will return something!
-#  }
-
 end
