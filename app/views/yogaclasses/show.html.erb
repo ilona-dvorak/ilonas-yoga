@@ -21,8 +21,14 @@
     <p><i class="fas fa-money-bill-wave pr-3"></i><%= @yogaclass.price%></p>
     <div class="bookings"> <%= link_to 'Book Class', yogaclass_bookings_path(@yogaclass), method: :POST ,class: "btn btn-gradient"%></div>
   </div>
-
 </div>
+
+<div id="map"
+  style="width: 100%; height: 600px;"
+  data-markers="<%= @markers.to_json %>"
+  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+></div>
+
 
 <!--%= link_to 'Edit', edit_yogaclass_path(@yogaclass), class: "btn btn-primary" %-->
 <!--%= link_to "❌", yogaclass_path(yogaclass), method: :delete, data: { confirm: 'are you sure?' }, class: "btn-delete" %-->
