@@ -7,7 +7,6 @@
 </div>
 
 <div class="show-cards">
-
   <div class="card-description">
     <h3>Class Description</h3>
     <p><%= @yogaclass.description %></p>
@@ -17,30 +16,25 @@
         <%= link_to 'Cancel', yogaclass_path(@yogaclass), method: :delete, data: { confirm: 'Do you really want to cancel this class?' }, class: "btn btn-ghost" %>
       <% end %>
     </div>
-    <% if @yogaclass.user == current_user %>
-        <h3><%= @bookings.count %> Participants:</h3>
-        <ul>
-          <% @bookings.each do |booking| %>
-            <li> <%= booking.user.first_name %> <%= booking.user.last_name %> </li>
-          <% end %>
-        </ul>
-    <% end %>
+      <h3><%= @bookings.count %> Participant/s</h3>
+      <ul>
+        <% @bookings.each do |booking| %>
+          <li> <%= booking.user.first_name %> <%= booking.user.last_name %> </li>
+        <% end %>
+      </ul>
   </div>
-
   <div class="card-info">
     <h3>Booking Details</h3>
     <p><i class="fas fa-map-marked pr-3"> </i><%=@yogaclass.address%></p>
     <p><i class="fas fa-calendar-day pr-3"></i><%=@yogaclass.start_at%></p>
-    <p><i class="fas fa-history pr-3"></i><%= @yogaclass.duration%></p>
-    <p><i class="fas fa-money-bill-wave pr-3"></i><%= @yogaclass.price%></p>
+    <p><i class="fas fa-history pr-3"></i><%= @yogaclass.duration%> hours</p>
+    <p><i class="fas fa-money-bill-wave pr-3"></i><%= @yogaclass.price%> $</p>
     <div class="button-container">
       <% unless @yogaclass.user == current_user %>
         <%= link_to 'Book Class', yogaclass_bookings_path(@yogaclass), method: :POST ,class: "btn btn-gradient"%>
       <% end %>
     </div>
   </div>
-
-
 </div>
 
 <div id="map"
