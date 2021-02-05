@@ -8,7 +8,7 @@
     <% end %>
     <div class="card-product-infos">
       <h2><%= link_to booking.yogaclass.title, yogaclass_path(booking.yogaclass) %></h2>
-      <h3>with <%= booking.yogaclass.user.first_name %></h3>
+      <h3>with <%= booking.yogaclass.user.first_name %> <%= booking.yogaclass.user.last_name %></h3>
       <p><i class="fas fa-map-marked pr-3"></i><%= booking.yogaclass.address %></p>
       <p><i class="fas fa-calendar-day pr-3"></i><%= booking.yogaclass.start_at %></p>
     </div>
