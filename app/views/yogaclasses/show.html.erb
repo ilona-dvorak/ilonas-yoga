@@ -2,6 +2,7 @@
 <div class="showbanner" style=" background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= asset_path 'banner.jpg' %>);height: 380px">
   <div class="container" style = "padding-top: 96px;">
     <h1> <%= @yogaclass.title %> </h1>
+    <h2>with <%= @yogaclass.user.first_name %> </h2>
   </div>
 </div>
 

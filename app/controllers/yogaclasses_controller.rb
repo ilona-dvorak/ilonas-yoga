@@ -3,7 +3,7 @@ class YogaclassesController < ApplicationController
   before_action :set_yogaclass, only: [:show, :destroy]
 
   def index
-    # @yogaclasses = Yogaclass.all
+    @user = current_user
     @yogaclasses = policy_scope(Yogaclass).order(created_at: :desc)
 
     @markers = @yogaclasses.geocoded.map do |yogaclass|
@@ -24,6 +24,7 @@ class YogaclassesController < ApplicationController
   def new
     @yogaclass = Yogaclass.new
     authorize @yogaclass
+    @user = current_user
   end
 
   def show
@@ -35,6 +36,8 @@ class YogaclassesController < ApplicationController
       lng: @yogaclass.longitude,
       infoWindow: render_to_string(partial: "info_window", locals: { yogaclass: @yogaclass })
     }]
+
+    @user = current_user
   end
 
   def create

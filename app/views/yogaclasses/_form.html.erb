@@ -3,7 +3,7 @@
   <%= f.input :class_type, collection: Yogaclass::CLASS_TYPES %>
   <%= f.input :price %>
   <%= f.input :address %>
-  <%= f.input :start_at %>
+  <%= f.input :start_at, discard_year: true, :minute_step => 15 %>
   <%= f.input :duration %>
   <%= f.input :description %>
   <%= f.input :photo, as: :file %>

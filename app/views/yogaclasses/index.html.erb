@@ -4,9 +4,9 @@
   <div class="card-trip">
     <%= link_to yogaclass_path(yogaclass) do %>
       <% if yogaclass.photo.attached? %>
-        <%= cl_image_tag yogaclass.photo.key, height: 200, crop: :fit %>
+        <%= cl_image_tag yogaclass.photo.key, height: 200, crop: :fit, class: "card-image" %>
       <% else %>
-        <%= image_tag "yoga-at-the-beach.jpg" %>
+        <%= image_tag "yoga-at-the-beach.jpg", class: "card-image" %>
       <% end %>
     <% end %>
     <div class="card-trip-infos">
@@ -15,7 +15,11 @@
         <p><%= yogaclass.description %></p>
       </div>
       <h2 class="card-trip-pricing">€<%= yogaclass.price %></h2>
-<!--       <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" /> -->
+      <% if yogaclass.user.photo.attached? %>
+        <%= cl_image_tag yogaclass.user.photo.key, class: "card-trip-user avatar-bordered"%>
+      <% else %>
+        <%= image_tag "avatar-placeholder.jpg", class: "card-trip-user avatar-bordered" %>
+      <% end %>
     </div>
   </div>
   <% end %>
@@ -26,4 +30,3 @@
   data-markers="<%= @markers.to_json %>"
   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
 ></div>
-
