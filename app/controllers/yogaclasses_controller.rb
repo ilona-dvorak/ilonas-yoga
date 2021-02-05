@@ -6,12 +6,19 @@ class YogaclassesController < ApplicationController
     # @yogaclasses = Yogaclass.all
     @yogaclasses = policy_scope(Yogaclass).order(created_at: :desc)
 
+    @markers = @yogaclasses.geocoded.map do |yogaclass|
+      {
+        lat: yogaclass.latitude,
+        lng: yogaclass.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { yogaclass: yogaclass })
+      }
+    end
+
     if params[:query].present?
       @yogaclasses = Yogaclass.global_search(params[:query])
     else
       @yogaclasses = Yogaclass.all
     end
-
   end
 
   def new
@@ -22,6 +29,12 @@ class YogaclassesController < ApplicationController
   def show
     @bookings = @yogaclass.bookings
     @booking = Booking.new
+
+    @marker = {
+      lat: @yogaclass.latitude,
+      lng: @yogaclass.longitude,
+      infoWindow: render_to_string(partial: "info_window", locals: { yogaclass: @yogaclass })
+    }
   end
 
   def create

@@ -35,6 +35,7 @@ gem 'devise'
 gem 'faker'
 gem 'pundit'
 gem 'pg_search', '~> 2.3.0'
+gem 'geocoder'
 
 # Gemfile
 gem 'cloudinary', '~> 1.16.0'
