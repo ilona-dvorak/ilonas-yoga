@@ -30,11 +30,11 @@ class YogaclassesController < ApplicationController
     @bookings = @yogaclass.bookings
     @booking = Booking.new
 
-    @marker = {
+    @markers = [{
       lat: @yogaclass.latitude,
       lng: @yogaclass.longitude,
       infoWindow: render_to_string(partial: "info_window", locals: { yogaclass: @yogaclass })
-    }
+    }]
   end
 
   def create
