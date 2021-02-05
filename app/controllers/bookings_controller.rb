@@ -34,7 +34,7 @@ class BookingsController < ApplicationController
   def destroy
     @yogaclass = @booking.yogaclass
     @booking.destroy
-    redirect_to yogaclass_path(@yogaclass)
+    redirect_to "/yogaclasses/:yogaclass_id/bookings"
   end
 
   private
