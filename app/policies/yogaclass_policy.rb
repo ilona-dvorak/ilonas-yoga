@@ -13,13 +13,9 @@ class YogaclassPolicy < ApplicationPolicy
     true
   end
 
-  # Uncomment these methods below if we have added update/edit options.
-  # add 'authorize @yogaclass' to the controller methods
-  # edit views accordingly
-
-  # def update?
-  #   user_is_owner_or_admin?
-  # end
+  def update?
+    user_is_owner_or_admin?
+  end
 
   def destroy?
     user_is_owner_or_admin?

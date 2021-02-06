@@ -1,6 +1,7 @@
 class ReviewsController < ApplicationController
   def create
     @yogaclass = Yogaclass.find(params[:yogaclass_id])
+    authorize @review
     @review = Review.new(review_params)
     @review.yogaclass = @yogaclass
     if @review.save
