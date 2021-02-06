@@ -1,5 +1,8 @@
-<!--%= render './shared/showbanner' %-->
-<div class="showbanner" style=" background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= asset_path 'banner.jpg' %>);height: 380px">
+<% if @yogaclass.photo.attached? %>
+  <div class="showbanner" style=" background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= cl_image_path @yogaclass.photo.key, height: 300, crop: :fit, class: "showbanner" %>);">
+<% else %>
+  <div class="showbanner" style=" background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= asset_path 'banner.jpg' %>);height: 380px">
+<% end %>
   <div class="container" style = "padding-top: 96px;">
     <h1> <%= @yogaclass.title %> </h1>
     <h2>with <%= @yogaclass.user.first_name %> </h2>
@@ -13,7 +16,7 @@
     <div class="button-container">
       <% if @yogaclass.user == current_user %>
         <%= link_to 'Edit', edit_yogaclass_path(@yogaclass), class: "btn btn-flat" %>
-        <%= link_to 'Cancel', yogaclass_path(@yogaclass), method: :delete, data: { confirm: 'Do you really want to cancel this class?' }, class: "btn btn-ghost" %>
+        <%= link_to 'Delete', yogaclass_path(@yogaclass), method: :delete, data: { confirm: 'Do you really want to delete this class?' }, class: "btn btn-ghost" %>
       <% end %>
     </div>
       <h3><%= @bookings.count %> Participant/s</h3>
@@ -22,35 +25,16 @@
           <li> <%= booking.user.first_name %> <%= booking.user.last_name %> </li>
         <% end %>
       </ul>
-
- <h5 class = "title"><%= pluralize @yogaclass.reviews.size, "review" %></h5>
-
-<div id="reviews">
-  <% if @yogaclass.reviews.blank? %>
-    Be the first to leave a review for <%= @yogaclass.title %>
-  <% else %>
-    <% @yogaclass.reviews.each do |review| %>
-      <p id="review-<%= review.id %>"><%= review.content %></p>
-    <% end %>
-  <% end %>
-</div>
-
-<%= simple_form_for([ @yogaclass, @review ], remote: true) do |f| %>
-  <%= f.input :content, as: :text %>
-  <%= f.button :submit %>
-<% end %>
-
   </div>
-
-  <!-- included from review lecture to review -->
-
 
   <div class="card-info">
     <h3>Booking Details</h3>
-    <p><i class="fas fa-map-marked pr-3"> </i><%=@yogaclass.address%></p>
-    <p><i class="fas fa-calendar-day pr-3"></i><%=@yogaclass.start_at%></p>
-    <p><i class="fas fa-history pr-3"></i><%= @yogaclass.duration%> hours</p>
-    <p><i class="fas fa-money-bill-wave pr-3"></i><%= @yogaclass.price%> $</p>
+    <div class="info-details">
+      <p><i class="fas fa-map-marked pr-3"> </i><%=@yogaclass.address%></p>
+      <p><i class="fas fa-calendar-day pr-3"></i><%=@yogaclass.start_at%></p>
+      <p><i class="fas fa-history pr-3"></i><%= @yogaclass.duration%> hours</p>
+      <p><i class="fas fa-money-bill-wave pr-3"></i><%= @yogaclass.price%> $</p>
+    </div>
     <div class="button-container">
       <% unless @yogaclass.user == current_user %>
         <%= link_to 'Book Class', yogaclass_bookings_path(@yogaclass), method: :POST ,class: "btn btn-gradient"%>
@@ -58,9 +42,28 @@
     </div>
   </div>
 </div>
+<div class="card-reviews">
+  <h3 class = "title"><%= pluralize @yogaclass.reviews.size, "Review" %></h3>
+    <div id="reviews">
+      <% if @yogaclass.reviews.blank? && @yogaclass.user != current_user %>
+        Be the first to leave a review for <%= @yogaclass.title %>
+      <% else %>
+        <% @yogaclass.reviews.each do |review| %>
+          <p id="review-<%= review.id %>"><%= review.content %></p>
+        <% end %>
+      <% end %>
+    </div>
 
-<div id="map"
-  style="width: 100%; height: 600px;"
+    <% unless @yogaclass.user == current_user %>
+      <%= simple_form_for([ @yogaclass, @review ], remote: true) do |f| %>
+        <%= f.input :content, as: :text, label: 'How was your Yoga Class?' %>
+        <%= f.button :submit, 'Leave Review', class: 'btn-gradient' %>
+      <% end %>
+    <% end %>
+</div>
+
+<div class ="map-container" id="map"
+  style="height: 400px;"
   data-markers="<%= @markers.to_json %>"
   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
 </div>

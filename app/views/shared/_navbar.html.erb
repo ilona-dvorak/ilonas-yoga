@@ -15,7 +15,7 @@
       </li>
       <li class="nav-item">
         <%if user_signed_in? %>
-          <% if @user.user_type == "Teacher" %>
+          <% if current_user.user_type == "Teacher" %>
             <%= link_to "Offer Class", "/yogaclasses/new", class: "nav-link" %>
           <% end %>
         <% end %>
