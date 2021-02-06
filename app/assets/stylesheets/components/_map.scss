@@ -3,9 +3,20 @@
 }
 
 .mapboxgl-popup-content {
+  background-color: $minty-green;
+  border: white 3px solid;
   text-align: center;
   font-family: 'Open Sans', sans-serif;
-  color: red;
+  color: $grey-black;
+}
+
+.mapboxgl-popup-content a {
+  color: $gold-brown;
+  text-decoration: none;
+}
+
+.mapboxgl-popup-content h4 {
+  color: $gold-brown;
 }
 
 .map-container {
