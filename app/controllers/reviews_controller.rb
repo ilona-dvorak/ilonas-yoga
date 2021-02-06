@@ -1,8 +1,8 @@
 class ReviewsController < ApplicationController
   def create
     @yogaclass = Yogaclass.find(params[:yogaclass_id])
-    authorize @review
     @review = Review.new(review_params)
+    authorize @review
     @review.yogaclass = @yogaclass
     if @review.save
       redirect_to yogaclass_path(@yogaclass, anchor: "review-#{@review.id}")
