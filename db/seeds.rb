@@ -43,7 +43,7 @@ puts "#{User.count} users created successfully."
 puts "Now creating yogaclasses..."
 
 class_types = %w(Yoga-Beginner Yoga-Intermediate Yoga-Advanced Pilates-Beginner Pilates-Intermediate Pilates-Advanced)
-addresses = ["Scharnweberstrasse 13, Mannheim", "Michaelkirchstr. 28, Minden", "Prenzlauer Allee 60, Leipzig", "Rosenstrasse 16, Munich", "Rathausstrasse 45, Nuremberg", "Leopoldstraße 68, Siegen", "Ehrenstrasse 66, Cologne", "Friedrichstrasse 10, Düsseldorf", "Hermannstrasse 1, Berlin", "Fugger Strasse 62, Potsdam"]
+addresses = ["Mannheim, Germany", "Cologne, Germany", "Berlin, Germany", "Munich, Germany", "Düsseldorf, Germany", "Hamburg, Germany", "Bielefeld, Germany", "Leipzig, Germany", "Stuttgart, Germany", "Kassel, Germany"]
 
 20.times do
   yoga_class = Yogaclass.new(
