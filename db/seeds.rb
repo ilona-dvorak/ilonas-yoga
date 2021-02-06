@@ -9,6 +9,9 @@ require 'json'
 require 'open-uri'
 require 'faker'
 
+Review.destroy_all
+puts "Reviews are deleted"
+
 Booking.destroy_all
 puts "Bookings are deleted"
 
@@ -20,152 +23,103 @@ puts "Users are deleted"
 
 puts "Creating users..."
 
-# Students
-@user_one = User.create!(email: Faker::Internet.email, password: "12345678", user_type: "Student", first_name: Faker::Name.first_name, last_name: Faker::Name.last_name)
-@user_two = User.create!(email: Faker::Internet.email, password: "12345678", user_type: "Student", first_name: Faker::Name.first_name, last_name: Faker::Name.last_name)
-@user_three = User.create!(email: Faker::Internet.email, password: "12345678", user_type: "Student", first_name: Faker::Name.first_name, last_name: Faker::Name.last_name)
-@user_four = User.create!(email: Faker::Internet.email, password: "12345678", user_type: "Student", first_name: Faker::Name.first_name, last_name: Faker::Name.last_name)
-@user_five = User.create!(email: Faker::Internet.email, password: "12345678", user_type: "Student", first_name: Faker::Name.first_name, last_name: Faker::Name.last_name)
-@user_six = User.create!(email: Faker::Internet.email, password: "12345678", user_type: "Student", first_name: Faker::Name.first_name, last_name: Faker::Name.last_name)
-# Teachers
-@user_seven = User.create!(email: Faker::Internet.email, password: "12345678", user_type: "Teacher", first_name: Faker::Name.first_name, last_name: Faker::Name.last_name)
-@user_eight = User.create!(email: Faker::Internet.email, password: "12345678", user_type: "Teacher", first_name: Faker::Name.first_name, last_name: Faker::Name.last_name)
-@user_nine = User.create!(email: Faker::Internet.email, password: "12345678", user_type: "Teacher", first_name: Faker::Name.first_name, last_name: Faker::Name.last_name)
-@user_ten = User.create!(email: Faker::Internet.email, password: "12345678", user_type: "Teacher", first_name: Faker::Name.first_name, last_name: Faker::Name.last_name)
+user_types = %w(Student Teacher)
+password = 123456
+
+10.times do
+  user = User.new(
+    email: Faker::Internet.email,
+    password: password,
+    user_type: user_types.sample,
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name
+    )
+  user.save!
+  puts "Creating user nr. #{user.id}"
+end
 
 puts "#{User.count} users created successfully."
 
 puts "Now creating yogaclasses..."
 
-TYPES = ['Yoga-Beginner', 'Yoga-Intermediate', 'Yoga-Advanced', 'Pilates-Beginner', 'Pilates-Intermediate', 'Pilates-Advanced']
-DURATION = [0.5, 1, 1.5, 2]
+class_types = %w(Yoga-Beginner Yoga-Intermediate Yoga-Advanced Pilates-Beginner Pilates-Intermediate Pilates-Advanced)
+addresses = ["Scharnweberstrasse 13, Mannheim", "Michaelkirchstr. 28, Minden", "Prenzlauer Allee 60, Leipzig", "Rosenstrasse 16, Munich", "Rathausstrasse 45, Nuremberg", "Leopoldstraße 68, Siegen", "Ehrenstrasse 66, Cologne", "Friedrichstrasse 10, Düsseldorf", "Hermannstrasse 1, Berlin", "Fugger Strasse 62, Potsdam"]
 
-@yoga_one = Yogaclass.new(
-  title: "Yoga at #{Faker::Address.community}",
-  description: Faker::Lorem.paragraph_by_chars,
-  price: "#{rand(10..20)}",
-  class_type: TYPES.sample,
-  address: Faker::Address.full_address,
-  duration: DURATION.sample,
-  start_at: Time.now + 1.days
+20.times do
+  yoga_class = Yogaclass.new(
+    title: "Yoga at #{Faker::Address.community}",
+    description: Faker::Quote.matz,
+    price: "#{rand(10..20)}",
+    class_type: class_types.sample,
+    address: addresses.sample,
+    duration: [0.5, 1, 1.5, 2].sample,
+    start_at: Time.now + 2.days
+  )
+  yoga_class.user = User.where(user_type: "Teacher").sample
+  yoga_class.save!
+  puts "Creating Yoga class nr. #{yoga_class.id}"
+end
+
+puts "Created #{Yogaclass.count} yoga classes!"
+
+puts "Time to upload images"
+
+avatar_urls = %w(https://res.cloudinary.com/byktzgl/image/upload/v1612610550/avatars/ph_wzfnem.jpg
+                 https://res.cloudinary.com/byktzgl/image/upload/v1612610550/avatars/yg_wyzx3r.jpg
+                 https://res.cloudinary.com/byktzgl/image/upload/v1612610550/avatars/ob_tdubwy.jpg
+                 https://res.cloudinary.com/byktzgl/image/upload/v1612610550/avatars/ms_ji35rf.jpg
+                 https://res.cloudinary.com/byktzgl/image/upload/v1612610550/avatars/kku_givbng.jpg
+                 https://res.cloudinary.com/byktzgl/image/upload/v1612610550/avatars/mm_gdudto.jpg
+                 https://res.cloudinary.com/byktzgl/image/upload/v1612610549/avatars/ch_zeddj4.jpg
+                 https://res.cloudinary.com/byktzgl/image/upload/v1612610550/avatars/lg_jg9bag.jpg
+                 https://res.cloudinary.com/byktzgl/image/upload/v1612610549/avatars/id_y0gn6z.jpg
+                 https://res.cloudinary.com/byktzgl/image/upload/v1612610549/avatars/kkl_eofqy9.jpg
 )
-@yoga_one.user = @user_seven
-yoga_one = URI.open('https://res.cloudinary.com/byktzgl/image/upload/v1612014734/yoga-2_zslapu.jpg')
-@yoga_one.photo.attach(io: yoga_one, filename: 'yoga_one image', content_type: 'image/jpg')
-@yoga_one.save!
 
-puts "Created #{@yoga_one.title}!"
-
-@yoga_two = Yogaclass.new(
-  title: "Yoga at #{Faker::Address.community}",
-  description: Faker::Lorem.paragraph_by_chars,
-  price: "#{rand(10..20)}",
-  class_type: TYPES.sample,
-  address: Faker::Address.full_address,
-  duration: DURATION.sample,
-  start_at: Time.now + 2.days
+photo_urls = %w(https://res.cloudinary.com/byktzgl/image/upload/v1612014733/yoga-1_tgvuyh.jpg
+                https://res.cloudinary.com/byktzgl/image/upload/v1612014734/yoga-2_zslapu.jpg
+                https://res.cloudinary.com/byktzgl/image/upload/v1612014733/yoga-3_jcgis9.jpg
+                https://res.cloudinary.com/byktzgl/image/upload/v1612014733/yoga-4_etjz8z.jpg
+                https://res.cloudinary.com/byktzgl/image/upload/v1612014733/yoga-5_ujul32.jpg
+                https://res.cloudinary.com/byktzgl/image/upload/v1612014733/yoga-6_lba8gf.jpg
+                https://res.cloudinary.com/byktzgl/image/upload/v1612014733/yoga-7_hl5exw.jpg
+                https://res.cloudinary.com/byktzgl/image/upload/v1612014733/yoga-8_ie7lwe.jpg
 )
-@yoga_two.user = @user_seven
-yoga_two = URI.open('https://res.cloudinary.com/byktzgl/image/upload/v1612014733/yoga-3_jcgis9.jpg')
-@yoga_two.photo.attach(io: yoga_two, filename: 'yoga_two image', content_type: 'image/jpg')
-@yoga_two.save!
 
-puts "Created #{@yoga_two.title}!"
+# user_avatar = URI.open(avatar_urls.sample)
+avatar_names = %w(avatar_one avatar_two avatar_three avatar_four avatar_five avatar_six avatar_seven avatar_eight avatar_nine avatar_ten)
+User.all.each do |user|
+  x = 0
+  user.photo.attach(io: URI.open(avatar_urls.sample), filename: "#{avatar_names[x]} image", content_type: 'image/jpeg')
+  x += 1
+end
 
-@yoga_three = Yogaclass.new(
-  title: "Yoga at #{Faker::Address.community}",
-  description: Faker::Lorem.paragraph_by_chars,
-  price: "#{rand(10..20)}",
-  class_type: TYPES.sample,
-  address: Faker::Address.full_address,
-  duration: DURATION.sample,
-  start_at: Time.now + 2.days
-)
-@yoga_three.user = @user_eight
-yoga_three = URI.open('https://res.cloudinary.com/byktzgl/image/upload/v1612014733/yoga-7_hl5exw.jpg')
-@yoga_three.photo.attach(io: yoga_three, filename: 'yoga_three image', content_type: 'image/jpg')
-@yoga_three.save!
+puts "user images are uploaded"
 
-puts "Created #{@yoga_three.title}!"
+# yoga_photo = URI.open(photo_urls.sample)
+photo_names = %w(photo_one photo_two photo_three photo_four photo_five photo_six photo_seven photo_eight photo_nine photo_ten)
+Yogaclass.all.each do |yoga|
+  x = 0
+  yoga.photo.attach(io: URI.open(photo_urls.sample), filename: "#{photo_names[x]} image", content_type: 'image/jpeg')
+  x += 1
+end
 
-@yoga_four = Yogaclass.new(
-  title: "Yoga at #{Faker::Address.community}",
-  description: Faker::Lorem.paragraph_by_chars,
-  price: "#{rand(10..20)}",
-  class_type: TYPES.sample,
-  address: Faker::Address.full_address,
-  duration: DURATION.sample,
-  start_at: Time.now + 3.days
-)
-@yoga_four.user = @user_eight
-yoga_four = URI.open('https://res.cloudinary.com/byktzgl/image/upload/v1612014733/yoga-4_etjz8z.jpg')
-@yoga_four.photo.attach(io: yoga_four, filename: 'yoga_four image', content_type: 'image/jpg')
-@yoga_four.save!
+puts "yoga class images are uploaded"
 
-puts "Created #{@yoga_four.title}!"
 
-@yoga_five = Yogaclass.new(
-  title: "Yoga at #{Faker::Address.community}",
-  description: Faker::Lorem.paragraph_by_chars,
-  price: "#{rand(10..20)}",
-  class_type: TYPES.sample,
-  address: Faker::Address.full_address,
-  duration: DURATION.sample,
-  start_at: Time.now + 3.days
-)
-@yoga_five.user = @user_nine
-yoga_five = URI.open('https://res.cloudinary.com/byktzgl/image/upload/v1612014733/yoga-5_ujul32.jpg')
-@yoga_five.photo.attach(io: yoga_five, filename: 'yoga_five image', content_type: 'image/jpg')
-@yoga_five.save!
+puts "Now adding reviews to the yoga classes"
 
-puts "Created #{@yoga_five.title}!"
+all_classes = Yogaclass.all
+all_classes.each do |yogaclass|
+  5.times do
+    review = Review.new(
+      content: Faker::Quotes::Shakespeare.as_you_like_it_quote
+    )
+    yogaclass.reviews << review
+    yogaclass.save!
+  end
+end
 
-@yoga_six = Yogaclass.new(
-  title: "Yoga at #{Faker::Address.community}",
-  description: Faker::Lorem.paragraph_by_chars,
-  price: "#{rand(10..20)}",
-  class_type: TYPES.sample,
-  address: Faker::Address.full_address,
-  duration: DURATION.sample,
-  start_at: Time.now + 4.days
-)
-@yoga_six.user = @user_nine
-yoga_six = URI.open('https://res.cloudinary.com/byktzgl/image/upload/v1612014733/yoga-6_lba8gf.jpg')
-@yoga_six.photo.attach(io: yoga_six, filename: 'yoga_six image', content_type: 'image/jpg')
-@yoga_six.save!
+puts "Reviews are there!"
 
-puts "Created #{@yoga_six.title}!"
-
-@yoga_seven = Yogaclass.new(
-  title: "Yoga at #{Faker::Address.community}",
-  description: Faker::Lorem.paragraph_by_chars,
-  price: "#{rand(10..20)}",
-  class_type: TYPES.sample,
-  address: Faker::Address.full_address,
-  duration: DURATION.sample,
-  start_at: Time.now + 4.days
-)
-@yoga_seven.user = @user_ten
-yoga_seven = URI.open('https://res.cloudinary.com/byktzgl/image/upload/v1612014733/yoga-1_tgvuyh.jpg')
-@yoga_seven.photo.attach(io: yoga_seven, filename: 'yoga_seven image', content_type: 'image/jpg')
-@yoga_seven.save!
-
-puts "Created #{@yoga_seven.title}!"
-
-@yoga_eight = Yogaclass.new(
-  title: "Yoga at #{Faker::Address.community}",
-  description: Faker::Lorem.paragraph_by_chars,
-  price: "#{rand(10..20)}",
-  class_type: TYPES.sample,
-  address: Faker::Address.full_address,
-  duration: DURATION.sample,
-  start_at: Time.now + 5.days
-)
-@yoga_eight.user = @user_ten
-yoga_eight = URI.open('https://res.cloudinary.com/byktzgl/image/upload/v1612014733/yoga-8_ie7lwe.jpg')
-@yoga_eight.photo.attach(io: yoga_eight, filename: 'yoga_eight image', content_type: 'image/jpg')
-@yoga_eight.save!
-
-puts "Created #{@yoga_eight.title}!"
-
-puts "All seeds are created!"
+puts "So, all seeds are created, well done!"
