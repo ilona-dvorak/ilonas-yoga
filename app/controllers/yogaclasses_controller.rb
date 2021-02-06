@@ -29,6 +29,7 @@ class YogaclassesController < ApplicationController
   def show
     @bookings = @yogaclass.bookings
     @booking = Booking.new
+    @review = Review.new
 
     @markers = [{
       lat: @yogaclass.latitude,

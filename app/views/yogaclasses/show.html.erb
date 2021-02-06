@@ -23,6 +23,25 @@
         <% end %>
       </ul>
   </div>
+
+  <!-- included from review lecture to review -->
+ <h5 class = "title"><%= pluralize @yogaclass.reviews.size, "review" %></h5>
+
+<div id="reviews">
+  <% if @yogaclass.reviews.blank? %>
+    Be the first to leave a review for <%= @yogaclass.title %>
+  <% else %>
+    <% @yogaclass.reviews.each do |review| %>
+      <p id="review-<%= review.id %>"><%= review.content %></p>
+    <% end %>
+  <% end %>
+</div>
+
+<%= simple_form_for([ @yogaclass, @review ], remote: true) do |f| %>
+  <%= f.input :content, as: :text %>
+  <%= f.button :submit %>
+<% end %>
+
   <div class="card-info">
     <h3>Booking Details</h3>
     <p><i class="fas fa-map-marked pr-3"> </i><%=@yogaclass.address%></p>
