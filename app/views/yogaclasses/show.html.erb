@@ -22,9 +22,7 @@
           <li> <%= booking.user.first_name %> <%= booking.user.last_name %> </li>
         <% end %>
       </ul>
-  </div>
 
-  <!-- included from review lecture to review -->
  <h5 class = "title"><%= pluralize @yogaclass.reviews.size, "review" %></h5>
 
 <div id="reviews">
@@ -41,6 +39,11 @@
   <%= f.input :content, as: :text %>
   <%= f.button :submit %>
 <% end %>
+
+  </div>
+
+  <!-- included from review lecture to review -->
+
 
   <div class="card-info">
     <h3>Booking Details</h3>
