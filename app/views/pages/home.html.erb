@@ -1,27 +1,27 @@
 <%= render "./shared/banner" %>
 
-<div class="search-spacing">
-  <%= render "./shared/search" %>
-  </div>
-<div class="cards">
+<!-- <div class="cards">
   <% @yogaclasses.each do |yogaclass| %>
-  <div class="card-trip">
-    <%= link_to yogaclass_path(yogaclass) do %>
-      <% if yogaclass.photo.attached? %>
-        <%= cl_image_tag yogaclass.photo.key %>
-      <% else %>
-        <%= image_tag "yoga-at-the-beach.jpg" %>
+    <div class="card-trip">
+      <%= link_to yogaclass_path(yogaclass) do %>
+        <% if yogaclass.photo.attached? %>
+          <%= cl_image_tag yogaclass.photo.key, class: "card-image" %>
+        <% else %>
+          <%= image_tag "yoga-at-the-beach.jpg", class: "card-image" %>
+        <% end %>
       <% end %>
-    <% end %>
-    <div class="card-trip-infos">
-      <div class="yogaclass-info">
-        <h2><%= link_to yogaclass.title, yogaclass_path(yogaclass) %></h2>
-        <p><%= yogaclass.description %></p>
+      <div class="card-trip-infos">
+        <div class="yogaclass-info">
+          <h2><%= link_to yogaclass.title, yogaclass_path(yogaclass) %></h2>
+          <p><%= yogaclass.description %></p>
+        </div>
+        <h2 class="card-trip-pricing">$<%= yogaclass.price %></h2>
+        <% if yogaclass.user.photo.attached? %>
+            <%= cl_image_tag yogaclass.user.photo.key, class: "card-trip-user avatar-bordered"%>
+          <% else %>
+            <%= image_tag "avatar-placeholder.jpg", class: "card-trip-user avatar-bordered" %>
+        <% end %>
       </div>
-      <h2 class="card-trip-pricing">€<%= yogaclass.price %></h2>
-<!--       <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" /> -->
     </div>
-  </div>
   <% end %>
-
-</div>
+</div> -->

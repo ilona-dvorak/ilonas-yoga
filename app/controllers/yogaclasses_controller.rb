@@ -1,17 +1,24 @@
 class YogaclassesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
-  before_action :set_yogaclass, only: [:show, :destroy]
+  before_action :set_yogaclass, only: [:show, :destroy, :edit, :update]
+  before_action :set_user, only: [:index, :new, :show, :edit, :update]
 
   def index
-    # @yogaclasses = Yogaclass.all
     @yogaclasses = policy_scope(Yogaclass).order(created_at: :desc)
+
+    @markers = @yogaclasses.geocoded.map do |yogaclass|
+      {
+        lat: yogaclass.latitude,
+        lng: yogaclass.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { yogaclass: yogaclass })
+      }
+    end
 
     if params[:query].present?
       @yogaclasses = Yogaclass.global_search(params[:query])
     else
       @yogaclasses = Yogaclass.all
     end
-
   end
 
   def new
@@ -23,6 +30,12 @@ class YogaclassesController < ApplicationController
     @bookings = @yogaclass.bookings
     @booking = Booking.new
     @review = Review.new
+
+    @markers = [{
+      lat: @yogaclass.latitude,
+      lng: @yogaclass.longitude,
+      infoWindow: render_to_string(partial: "info_window", locals: { yogaclass: @yogaclass })
+    }]
   end
 
   def create
@@ -36,12 +49,24 @@ class YogaclassesController < ApplicationController
     end
   end
 
-  def destroy
-    @yogaclass.destroy
+  def edit
+  end
+
+  def update
+    @yogaclass.update(yogaclass_params)
     redirect_to yogaclass_path(@yogaclass)
   end
 
+  def destroy
+    @yogaclass.destroy
+    redirect_to yogaclasses_path
+  end
+
   private
+
+  def set_user
+    @user = current_user
+  end
 
   def set_yogaclass
     @yogaclass = Yogaclass.find(params[:id])

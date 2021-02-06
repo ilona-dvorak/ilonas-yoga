@@ -1,61 +1,84 @@
-.main-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  // padding-left: 250px
-  flex-wrap: wrap;
+.show-cards {
+  display: grid;
+  grid-template-columns: 8fr 4fr;
+  grid-gap: 16px;
+  margin: 16px 16px;
 }
 
-.title h4 {
-  color: $gold-brown;
-  padding-right: 16px;
-  font-size: 30px;
+// Smallest device
+@media (min-width: 100px) and (max-width: 575px) {
+  .show-cards {
+    grid-template-columns: 1fr;
+  }
 }
 
-.container-description h3 {
-  color: $gold-brown;
-  font-size: 30px;
-  padding-top: 16px;
-  padding-left: 24px;
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .show-cards {
+    grid-template-columns: 1fr;
+  }
 }
 
-.container h5 {
-  padding-top: 32px;
-  font-size: 20px;
-  padding-left: 16px;
-  padding-right: 16px;
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .show-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .show-cards {
+    grid-template-columns: 8fr 4fr;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .show-cards {
+    grid-template-columns: 8fr 4fr;
+  }
 }
 
 .card-description {
-  width: 60%;
-  padding-top: 16px;
-  padding-left: 16px;
-  padding-right: 16px;
+  padding: 16px;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   overflow: hidden;
+  position: relative;
 }
 
-.card-sidebar {
-  width: 35%;
-  background: white;
-  font-size: 16px;
-  padding-left: 32px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  overflow: hidden;
-  padding-top: 8px;
-  padding-bottom: 8px
-}
-
-.title {
-  padding-top: 16px;
-  padding-bottom: 32px;
+.card-description h3 {
   color: $gold-brown;
 }
-.bookings {
+
+.card-description p {
+  font-size: 18px;
+}
+
+.card-description ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.card-info {
+  padding: 16px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  overflow: hidden;
   position: relative;
-  padding: 32px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+}
+
+.card-info h3 {
+  color: $gold-brown;
+}
+
+.card-info p {
+  font-size: 18px;
+}
+
+.button-container {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
 }

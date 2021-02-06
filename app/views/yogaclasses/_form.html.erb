@@ -1,11 +1,11 @@
 <%= simple_form_for(@yogaclass) do |f| %>
-  <%= f.input :title %>
-  <%= f.input :class_type, collection: Yogaclass::CLASS_TYPES %>
-  <%= f.input :price %>
+  <%= f.input :title, label: 'Class Title' %>
+  <%= f.input :class_type, label: 'Class Type', collection: Yogaclass::CLASS_TYPES %>
+  <%= f.input :price, label: 'Price ($)' %>
   <%= f.input :address %>
-  <%= f.input :start_at %>
-  <%= f.input :duration %>
-  <%= f.input :description %>
-  <%= f.input :photo, as: :file %>
+  <%= f.input :start_at, label: 'Date',  discard_year: true, :minute_step => 15 %>
+  <%= f.input :duration, label: 'Duration (hours)', collection: [0.5, 1, 1.5, 2, 2.5, 3] %>
+  <%= f.input :description, label: 'Describe your class' %>
+  <%= f.input :photo, label: 'Add a photo for your class', as: :file %>
   <%= f.button :submit, 'Create Yogaclass', class: 'btn-gradient' %>
 <% end %>

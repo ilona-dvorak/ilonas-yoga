@@ -36,6 +36,7 @@ gem 'faker'
 gem 'pundit'
 gem 'pg_search', '~> 2.3.0'
 gem 'turbolinks_render'
+gem 'geocoder'
 
 # Gemfile
 gem 'cloudinary', '~> 1.16.0'
