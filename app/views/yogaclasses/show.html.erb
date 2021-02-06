@@ -12,22 +12,23 @@
     <div class = "container"><h5><%= @yogaclass.description %></h5></div>
 
   <!-- included from review lecture to review -->
- <h2><%= pluralize @yogaclass.reviews.size, "review" %></h2>
+ <h5 class = "title"><%= pluralize @yogaclass.reviews.size, "review" %></h5>
 
 <div id="reviews">
   <% if @yogaclass.reviews.blank? %>
     Be the first to leave a review for <%= @yogaclass.title %>
   <% else %>
     <% @yogaclass.reviews.each do |review| %>
-      <p><%= review.content %></p>
+      <p id="review-<%= review.id %>"><%= review.content %></p>
     <% end %>
   <% end %>
 </div>
 
-<%= simple_form_for([ @yogaclass, @review ]) do |f| %>
+<%= simple_form_for([ @yogaclass, @review ], remote: true) do |f| %>
   <%= f.input :content, as: :text %>
   <%= f.button :submit %>
 <% end %>
+
   </div>
 
 
@@ -39,7 +40,6 @@
     <p><i class="fas fa-history pr-3"></i><%= @yogaclass.duration%></p>
     <p><i class="fas fa-money-bill-wave pr-3"></i><%= @yogaclass.price%></p>
     <div class="bookings"> <%= link_to 'Book Class', yogaclass_bookings_path(@yogaclass), method: :POST ,class: "btn btn-gradient"%></div>
-
   </div>
 
 </div>
