@@ -6,7 +6,7 @@ class ReviewPolicy < ApplicationPolicy
   end
 
   def create?
-    true
+    true if @user.user_type == "Student"
   end
 
   def show?
