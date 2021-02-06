@@ -1,5 +1,8 @@
-<!--%= render './shared/showbanner' %-->
-<div class="showbanner" style=" background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= asset_path 'banner.jpg' %>);height: 380px">
+<% if @yogaclass.photo.attached? %>
+  <div class="showbanner" style=" background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= cl_image_path @yogaclass.photo.key, height: 300, crop: :fit, class: "showbanner" %>);">
+<% else %>
+  <div class="showbanner" style=" background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= asset_path 'banner.jpg' %>);height: 380px">
+<% end %>
   <div class="container" style = "padding-top: 96px;">
     <h1> <%= @yogaclass.title %> </h1>
     <h2>with <%= @yogaclass.user.first_name %> </h2>
