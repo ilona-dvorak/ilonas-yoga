@@ -6,29 +6,39 @@
   </div>
 </div>
 
-<div class="main-container">
-
+<div class="show-cards">
   <div class="card-description">
-    <div class = "container-description"><h3>Class Description</h3></div>
-    <div class = "container"><h5><%= @yogaclass.description %></h5></div>
+    <h3>Class Description</h3>
+    <p><%= @yogaclass.description %></p>
+    <div class="button-container">
+      <% if @yogaclass.user == current_user %>
+        <%= link_to 'Edit', edit_yogaclass_path(@yogaclass), class: "btn btn-flat" %>
+        <%= link_to 'Cancel', yogaclass_path(@yogaclass), method: :delete, data: { confirm: 'Do you really want to cancel this class?' }, class: "btn btn-ghost" %>
+      <% end %>
+    </div>
+      <h3><%= @bookings.count %> Participant/s</h3>
+      <ul>
+        <% @bookings.each do |booking| %>
+          <li> <%= booking.user.first_name %> <%= booking.user.last_name %> </li>
+        <% end %>
+      </ul>
   </div>
-
-  <div class="card-sidebar">
-   <div class="title"> <h4>Booking Details</h4></div>
+  <div class="card-info">
+    <h3>Booking Details</h3>
     <p><i class="fas fa-map-marked pr-3"> </i><%=@yogaclass.address%></p>
     <p><i class="fas fa-calendar-day pr-3"></i><%=@yogaclass.start_at%></p>
-    <p><i class="fas fa-history pr-3"></i><%= @yogaclass.duration%></p>
-    <p><i class="fas fa-money-bill-wave pr-3"></i><%= @yogaclass.price%></p>
-    <div class="bookings"> <%= link_to 'Book Class', yogaclass_bookings_path(@yogaclass), method: :POST ,class: "btn btn-gradient"%></div>
+    <p><i class="fas fa-history pr-3"></i><%= @yogaclass.duration%> hours</p>
+    <p><i class="fas fa-money-bill-wave pr-3"></i><%= @yogaclass.price%> $</p>
+    <div class="button-container">
+      <% unless @yogaclass.user == current_user %>
+        <%= link_to 'Book Class', yogaclass_bookings_path(@yogaclass), method: :POST ,class: "btn btn-gradient"%>
+      <% end %>
+    </div>
   </div>
 </div>
 
 <div id="map"
   style="width: 100%; height: 600px;"
   data-markers="<%= @markers.to_json %>"
-  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-></div>
-
-
-<!--%= link_to 'Edit', edit_yogaclass_path(@yogaclass), class: "btn btn-primary" %-->
-<!--%= link_to "❌", yogaclass_path(yogaclass), method: :delete, data: { confirm: 'are you sure?' }, class: "btn-delete" %-->
+  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+</div>
