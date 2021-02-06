@@ -6,5 +6,6 @@
     <p><i class="fas fa-history pr-3"></i><%=@yogaclass.duration%> hours</p>
     <p><i class="fas fa-money-bill-wave pr-3"></i><%= @yogaclass.price%> $</p>
     <p>Please be there 10 minutes before class starts.<br>I am looking forward to seeing you!<br><%=@yogaclass.user.first_name%></p>
+    <%= link_to 'Back', yogaclass_path(@yogaclass), class: "btn btn-gradient"%>
   </div>
 </div>
